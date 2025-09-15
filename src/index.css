@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@plugin './hero.js';
+
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+@layer base{
+    :root {
+    /* Cute Pastel Background Colors */
+    --background: 325 100% 98%;
+    --foreground: 330 15% 25%;
+
+    /* Card & Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 330 15% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 330 15% 25%;
+
+    /* Primary - Soft Pink/Rose */
+    --primary: 338 75% 75%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 338 85% 85%;
+
+    /* Secondary - Lavender */
+    --secondary: 270 50% 88%;
+    --secondary-foreground: 330 15% 25%;
+
+    /* Accent - Mint Green */
+    --accent: 150 60% 80%;
+    --accent-foreground: 330 15% 25%;
+
+    /* Muted - Very Light Pink */
+    --muted: 325 40% 95%;
+    --muted-foreground: 330 15% 50%;
+
+    /* Success - Soft Green */
+    --success: 120 50% 75%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Peach */
+    --warning: 30 80% 80%;
+    --warning-foreground: 330 15% 25%;
+
+    /* Destructive - Soft Red */
+    --destructive: 0 70% 75%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 325 30% 90%;
+    --input: 325 30% 92%;
+    --ring: 338 75% 75%;
+
+    /* Cute Rounded Corners */
+    --radius: 1rem;
+
+    /* Beautiful Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(338, 75%, 75%), hsl(270, 50%, 88%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270, 50%, 88%), hsl(150, 60%, 80%));
+    --gradient-bg: linear-gradient(135deg, hsl(325, 100%, 98%), hsl(270, 100%, 98%));
+    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(325, 50%, 98%));
+
+    /* Cute Shadows */
+    --shadow-cute: 0 8px 25px -8px hsl(338, 75%, 75%, 0.3);
+    --shadow-soft: 0 4px 15px -4px hsl(325, 50%, 50%, 0.2);
+    --shadow-glow: 0 0 30px hsl(338, 85%, 85%, 0.5);
+
+    /* Smooth Transitions */
+    --transition-cute: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-soft: all 0.2s ease-in-out;
+  }
+
+  .dark {
+    /* Dark mode with cute pastels */
+    --background: 330 20% 8%;
+    --foreground: 325 50% 95%;
+
+    --card: 330 15% 12%;
+    --card-foreground: 325 50% 95%;
+
+    --popover: 330 15% 12%;
+    --popover-foreground: 325 50% 95%;
+
+    --primary: 338 75% 70%;
+    --primary-foreground: 330 20% 8%;
+    --primary-glow: 338 85% 80%;
+
+    --secondary: 270 40% 25%;
+    --secondary-foreground: 325 50% 95%;
+
+    --accent: 150 50% 40%;
+    --accent-foreground: 325 50% 95%;
+
+    --muted: 330 15% 18%;
+    --muted-foreground: 325 30% 70%;
+
+    --border: 330 20% 20%;
+    --input: 330 20% 20%;
+    --ring: 338 75% 70%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(338, 75%, 70%), hsl(270, 40%, 25%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270, 40%, 25%), hsl(150, 50%, 40%));
+    --gradient-bg: linear-gradient(135deg, hsl(330, 20%, 8%), hsl(270, 20%, 10%));
+    --gradient-card: linear-gradient(135deg, hsl(330, 15%, 12%), hsl(325, 20%, 15%));
+  }
+    h1{
+        @apply text-xl font-bold;
+    }
+    button{
+        @apply cursor-pointer
+    }
+    body {
+    @apply bg-gradient-to-br text-foreground font-['Nunito'] antialiased;
+    background-image: var(--gradient-bg);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+} 
+@layer components {
+  /* Cute Button Variants */
+  .btn-cute {
+    @apply text-primary-foreground rounded-2xl px-6 py-3 font-semibold 
+           transition-transform duration-300 ease-out;
+    background-image: var(--gradient-primary);
+    box-shadow: var(--shadow-cute);
+  }
+  .btn-soft {
+    @apply rounded-xl px-5 py-2.5 font-medium backdrop-blur-sm 
+           transition-transform duration-200 ease-out;
+    background-color: hsl(var(--secondary) / 0.8);
+    color: hsl(var(--secondary-foreground));
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-ghost {
+    @apply rounded-xl px-4 py-2 font-medium 
+           transition-colors duration-200 ease-out;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Cute Card Styles */
+  .card-cute {
+    @apply rounded-2xl p-6 transition-transform duration-300 ease-out;
+    background-image: var(--gradient-card);
+    box-shadow: var(--shadow-cute);
+  }
+
+  .card-post {
+    @apply rounded-3xl overflow-hidden border transition-transform duration-300 ease-out;
+    background-image: var(--gradient-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Cute Input Styles */
+  .input-cute {
+    @apply rounded-xl px-4 py-3 transition-all duration-200 ease-out;
+    background-color: hsl(var(--input) / 0.5);
+    border-color: hsl(var(--border) / 0.5);
+  }
+
+  /* Cute Animations */
+  .animate-bounce-soft {
+    animation: bounce-soft 2s infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
+@layer utilities {
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+}
+
+@keyframes bounce-soft {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+}
