@@ -17,7 +17,7 @@ import CreatePage from "./Pages/CreatePage";
 import ChangePasswordPage from "./Pages/ChangePasswordPage";
 import ChangePhotoPage from "./Pages/ChangePhotoPage";
 
-export const client = new QueryClient();
+export const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <QueryClientProvider client={client}>
+      <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
         <RouterProvider router={router} />
       </QueryClientProvider>

@@ -15,8 +15,7 @@ import {
   updateCommentApi,
 } from "../Services/commentsServices";
 
-export default function PostComment({ comment }) {
-  
+export default function PostComment({ comment, getSinglePost }) {
   const { userData } = useContext(authContext);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
   const [newCommentContent, setNewCommentContent] = useState(comment.content);
@@ -26,7 +25,7 @@ export default function PostComment({ comment }) {
     const response = await deleteCommentApi(comment._id);
     console.log(response);
     if (response.message === "success") {
-      window.location.reload();
+      getSinglePost();
     }
   }
 
@@ -35,7 +34,7 @@ export default function PostComment({ comment }) {
     const response = await updateCommentApi(comment._id, newCommentContent);
     if (response.message == "success") {
       setIsUpdateMode(false);
-      window.location.reload();
+      getSinglePost();
     }
   }
 

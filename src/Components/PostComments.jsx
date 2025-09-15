@@ -8,6 +8,7 @@ export default function PostComments({
   visibleComments,
   loadMoreComments,
   isLoading,
+  getSinglePost,
 }) {
   const comments =
     Array.isArray(post.comments) && post.comments.length > 0
@@ -23,7 +24,11 @@ export default function PostComments({
       </div>
 
       {comments.slice(0, commentsLimit ?? visibleComments).map((comment) => (
-        <PostComment key={comment._id} comment={comment} />
+        <PostComment
+          key={comment._id}
+          comment={comment}
+          getSinglePost={getSinglePost}
+        />
       ))}
 
       {comments.length >= visibleComments && !commentsLimit && (

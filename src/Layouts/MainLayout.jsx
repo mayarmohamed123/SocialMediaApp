@@ -5,7 +5,9 @@ import Navbar from "../Components/Navbar";
 export default function MainLayout() {
   return (
     <div>
-      <Navbar />
+      <ProtectedRoutes>
+        <Navbar />
+      </ProtectedRoutes>
       <Outlet />
     </div>
   );

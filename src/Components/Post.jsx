@@ -15,7 +15,13 @@ import PostActions from "./PostAction";
 import PostCommentInput from "./PostCommentInput";
 import PostComments from "./PostComments";
 
-export default function Post({ post, commentsLimit, callBack, postDetails }) {
+export default function Post({
+  post,
+  commentsLimit,
+  callBack,
+  postDetails,
+  getSinglePost,
+}) {
   const navigate = useNavigate();
   const { userData } = useContext(authContext);
 
@@ -31,7 +37,7 @@ export default function Post({ post, commentsLimit, callBack, postDetails }) {
       addComment(commentContent, postId),
     onSuccess: () => {
       setCommentContent("");
-      window.location.reload();
+      getSinglePost();
     },
   });
 
@@ -120,6 +126,7 @@ export default function Post({ post, commentsLimit, callBack, postDetails }) {
         visibleComments={visibleComments}
         loadMoreComments={loadMoreComments}
         isLoading={isLoading}
+        getSinglePost={getSinglePost}
       />
     </Card>
   );
