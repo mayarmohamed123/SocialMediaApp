@@ -8,8 +8,8 @@ export default function MainLayout() {
     <div>
       <ProtectedRoutes>
         <Navbar />
+        <Outlet />
       </ProtectedRoutes>
-      <Outlet />
     </div>
   );
 }
