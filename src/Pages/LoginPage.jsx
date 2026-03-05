@@ -30,7 +30,7 @@ export default function LoginPage() {
     if (data.error) {
       setErrorMsg(data.error);
     } else {
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("token", data.data.token);
       setIsLoggedIn(true);
       queryClient.removeQueries(["posts"]);
       console.log("login", isLoggedIn);

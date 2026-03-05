@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "https://linked-posts.routemisr.com/";
+const baseUrl = "https://route-posts.routemisr.com/";
 
 export async function addComment(commentContent, postId) {
  return axios.post(
@@ -10,7 +10,7 @@ export async function addComment(commentContent, postId) {
    },
    {
      headers: {
-       token: localStorage.getItem("token"),
+      Authorization: `Bearer ${localStorage.getItem("token")}`
      },
    }
  );
@@ -19,7 +19,7 @@ export async function deleteCommentApi(commentId) {
   try {
     const { data } = await axios.delete(baseUrl + "comments/" + commentId, {
       headers: {
-        token: localStorage.getItem("token"),
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
@@ -38,7 +38,7 @@ export async function updateCommentApi(commentId, newCommeentContent) {
       },
       {
         headers: {
-          token: localStorage.getItem("token"),
+           Authorization: `Bearer ${localStorage.getItem("token")}`
         },
       }
     );

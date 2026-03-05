@@ -33,8 +33,8 @@ export default function ChangePasswordPage() {
           type: "error",
         });
       } else {
-        if (data.token) {
-          localStorage.setItem("token", data.token);
+        if (data.data?.token) {
+          localStorage.setItem("token", data.data.token);
         }
         showToast({
           title: "Password Updated ✅",

@@ -1,5 +1,6 @@
 import axios from "axios";
-const baseUrl = "https://linked-posts.routemisr.com/";
+const baseUrl = "https://route-posts.routemisr.com/";
+
 
 export async function registerApi(formData) {
   try {
@@ -21,7 +22,7 @@ export async function getUserDataApi() {
   try {
     const { data } = await axios.get(baseUrl + "users/profile-data", {
       headers: {
-        token: localStorage.getItem("token"),
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return data;
@@ -36,7 +37,7 @@ export async function updatePasswordApi(formData) {
       formData,
       {
         headers: {
-          token: localStorage.getItem("token"),
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );
@@ -49,7 +50,7 @@ export async function updatePhotoApi(formData) {
   try {
     const { data } = await axios.put(baseUrl + "users/upload-photo", formData, {
       headers: {
-        token: localStorage.getItem("token"),
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return data;
@@ -60,7 +61,7 @@ export async function updatePhotoApi(formData) {
 export async function getUserPostsApi(userId) {
   return await axios.get(baseUrl + "users/" + userId + "/posts", {
     headers: {
-      token: localStorage.getItem("token"),
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
 }

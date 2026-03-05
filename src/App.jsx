@@ -16,8 +16,7 @@ import ForgetPasswordPage from "./Pages/ChangePasswordPage";
 import CreatePage from "./Pages/CreatePage";
 import ChangePasswordPage from "./Pages/ChangePasswordPage";
 import ChangePhotoPage from "./Pages/ChangePhotoPage";
-
-export const queryClient = new QueryClient();
+import { queryClient } from "./lib/queryClient";
 
 const router = createBrowserRouter([
   {

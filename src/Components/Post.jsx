@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Card } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "../App";
+import { queryClient } from "../lib/queryClient";
 import { authContext } from "../Contexts/AuthContext";
 import { showToast } from "./ToastUtility";
 import { deletePostApi, updatePostApi } from "../Services/postServices";
